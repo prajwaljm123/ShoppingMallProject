@@ -6,6 +6,7 @@ import com.cg.smms.service.ShopOwnerService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
 import java.util.Optional;
 
 @Service
@@ -33,5 +34,10 @@ public class ShopOwnerServiceImpl implements ShopOwnerService {
     @Override
     public void deleteShopOwner(Long id) {
         shopOwnerRepository.deleteById(id);
+    }
+
+    @Override
+    public List<ShopOwner> getAllShopOwners() {
+        return shopOwnerRepository.findAll();
     }
 }

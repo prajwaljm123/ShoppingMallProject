@@ -6,6 +6,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
+
 @RestController
 @RequestMapping("/api/shop-owners")
 public class ShopOwnerController {
@@ -22,6 +24,11 @@ public class ShopOwnerController {
     public ResponseEntity<ShopOwner> updateShopOwner(@PathVariable Long id, @RequestBody ShopOwner shopOwner) {
         shopOwner.setId(id);
         return ResponseEntity.ok(shopOwnerService.updateShopOwner(shopOwner));
+    }
+
+    @GetMapping
+    public ResponseEntity<List<ShopOwner>> getAllShopOwners() {
+        return ResponseEntity.ok(shopOwnerService.getAllShopOwners());
     }
 
     @GetMapping("/{id}")
