@@ -1,5 +1,6 @@
 package com.cg.smms.entities;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
@@ -15,9 +16,11 @@ public class OrderItem {
     private Double price;
     
     @ManyToOne
+    @JsonIgnore
     private Item item;
     
     @ManyToOne
+    @JsonIgnore
     private OrderDetails order;
 
     public Long getId() { return id; }

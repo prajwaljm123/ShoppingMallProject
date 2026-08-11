@@ -1,7 +1,10 @@
 package com.cg.smms.service.impl;
 
 import com.cg.smms.entities.Item;
+import com.cg.smms.entities.Shop;
+import com.cg.smms.exception.ResourceNotFoundException;
 import com.cg.smms.repository.ItemRepository;
+import com.cg.smms.repository.ShopRepository;
 import com.cg.smms.service.ItemService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -14,14 +17,29 @@ public class ItemServiceImpl implements ItemService {
 
     @Autowired
     private ItemRepository itemRepository;
+    
+    @Autowired
+    private ShopRepository shopRepository;
 
     @Override
     public Item addItem(Item item) {
+        // Fetch and set existing Shop
+        if (item.getShop() != null && item.getShop().getShopId() != null) {
+            Shop shop = shopRepository.findById(item.getShop().getShopId())
+                    .orElseThrow(() -> new ResourceNotFoundException("Shop not found with id: " + item.getShop().getShopId()));
+            item.setShop(shop);
+        }
         return itemRepository.save(item);
     }
 
     @Override
     public Item updateItem(Item item) {
+        // Fetch and set existing Shop
+        if (item.getShop() != null && item.getShop().getShopId() != null) {
+            Shop shop = shopRepository.findById(item.getShop().getShopId())
+                    .orElseThrow(() -> new ResourceNotFoundException("Shop not found with id: " + item.getShop().getShopId()));
+            item.setShop(shop);
+        }
         return itemRepository.save(item);
     }
 

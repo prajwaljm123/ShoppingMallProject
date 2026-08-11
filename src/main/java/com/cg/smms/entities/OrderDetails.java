@@ -1,5 +1,6 @@
 package com.cg.smms.entities;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.CascadeType;
 import jakarta.persistence.Entity;
 import jakarta.persistence.EnumType;
@@ -25,12 +26,15 @@ public class OrderDetails {
     private PaymentMode paymentMode;
     
     @ManyToOne
+    @JsonIgnore
     private Customer customer;
     
     @ManyToOne
+    @JsonIgnore
     private Shop shop;
     
     @OneToMany(mappedBy = "order", cascade = CascadeType.ALL)
+    @JsonIgnore
     private List<OrderItem> items;
     
     public enum PaymentMode {

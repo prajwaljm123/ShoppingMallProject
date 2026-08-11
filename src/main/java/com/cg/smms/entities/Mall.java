@@ -1,5 +1,6 @@
 package com.cg.smms.entities;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.CascadeType;
 import jakarta.persistence.Entity;
 import jakarta.persistence.EnumType;
@@ -27,6 +28,7 @@ public class Mall {
     private MallAdmin mallAdmin;
     
     @OneToMany(mappedBy = "mall", cascade = CascadeType.ALL)
+    @JsonIgnore
     private List<Shop> shops;
     
     public enum Category {

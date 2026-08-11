@@ -1,5 +1,6 @@
 package com.cg.smms.entities;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.CascadeType;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -20,9 +21,11 @@ public class Customer {
     private String email;
     
     @ManyToOne
+    @JsonIgnore
     private Shop shop;
     
     @OneToMany(mappedBy = "customer", cascade = CascadeType.ALL)
+    @JsonIgnore
     private List<OrderDetails> orders;
 
     public Long getId() { return id; }

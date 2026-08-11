@@ -1,5 +1,6 @@
 package com.cg.smms.entities;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
@@ -19,6 +20,7 @@ public class Employee {
     private String address;
     private String designation;
     @ManyToOne
+    @JsonIgnore
     private Shop shop;
 
     public Long getId() { return id; }

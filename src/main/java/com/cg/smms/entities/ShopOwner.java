@@ -1,5 +1,6 @@
 package com.cg.smms.entities;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
@@ -17,6 +18,7 @@ public class ShopOwner {
     private String address;
     private LocalDate dob;
     @OneToOne(mappedBy = "shopOwner")
+    @JsonIgnore
     private Shop shop;
 
     public Long getId() { return id; }
