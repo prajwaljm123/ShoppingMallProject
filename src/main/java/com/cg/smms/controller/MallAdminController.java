@@ -6,6 +6,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
+
 @RestController
 @RequestMapping("/api/mall-admins")
 public class MallAdminController {
@@ -28,6 +30,11 @@ public class MallAdminController {
     public ResponseEntity<MallAdmin> login(@RequestParam String name, @RequestParam String password) {
         MallAdmin admin = mallAdminService.login(name, password);
         return admin != null ? ResponseEntity.ok(admin) : ResponseEntity.status(401).build();
+    }
+
+    @GetMapping
+    public ResponseEntity<List<MallAdmin>> getAllMallAdmins() {
+        return ResponseEntity.ok(mallAdminService.getAllMallAdmins());
     }
 
     @GetMapping("/{id}")

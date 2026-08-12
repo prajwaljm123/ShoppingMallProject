@@ -6,6 +6,7 @@ import com.cg.smms.service.MallAdminService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
 import java.util.Optional;
 
 @Service
@@ -28,6 +29,11 @@ public class MallAdminServiceImpl implements MallAdminService {
     public MallAdmin getMallAdmin(Long id) {
         Optional<MallAdmin> mallAdmin = mallAdminRepository.findById(id);
         return mallAdmin.orElse(null);
+    }
+
+    @Override
+    public List<MallAdmin> getAllMallAdmins() {
+        return mallAdminRepository.findAll();
     }
 
     @Override
