@@ -3,11 +3,20 @@
 A Spring Boot REST API for managing shopping mall operations including malls, shops, customers, orders, and inventory.
 
 ## Tech Stack
+
+### Backend
 - **Java 17**
 - **Spring Boot 3.2.0**
 - **Spring Data JPA / Hibernate**
 - **PostgreSQL** (Production) / **H2** (Testing)
 - **Maven**
+
+### Frontend
+- **React 18**
+- **TypeScript**
+- **Vite**
+- **Tailwind CSS** (for styling and glassmorphism UI)
+- **Framer Motion** (for page transitions and animations)
 
 ## Features
 - Mall management (CRUD)
@@ -19,6 +28,7 @@ A Spring Boot REST API for managing shopping mall operations including malls, sh
 - Item/Inventory management with categories (CLOTHING, MOBILES, ACCESSORIES)
 - Order management with payment modes (CARD, CASH, UPI, ONLINEBANKING)
 - RESTful API with global exception handling
+- **Modern React Admin Dashboard** with animations and premium glassmorphism UI
 
 ## Project Structure
 ```
@@ -65,10 +75,12 @@ Default configuration uses in-memory H2. Access console at `http://localhost:808
 
 ## Running the Application
 
+### 1. Start the Backend
+
 ```bash
-# Clone and build
-git clone <repository-url>
-cd ShoppingMallManagementSystem
+# Clone the repository
+git clone https://github.com/prajwaljm123/ShoppingMallProject.git
+cd ShoppingMallProject
 
 # Run with Maven
 mvn spring-boot:run
@@ -77,8 +89,21 @@ mvn spring-boot:run
 mvn clean package -DskipTests
 java -jar target/ShoppingMallManagementSystem-1.0.0.jar
 ```
+Backend starts at `http://localhost:8082`
 
-Application starts at `http://localhost:8080`
+### 2. Start the Frontend
+
+```bash
+# Navigate to the frontend directory
+cd frontend
+
+# Install dependencies
+npm install
+
+# Start the Vite development server
+npm run dev
+```
+Frontend starts at `http://localhost:5173` (or the port specified by Vite in your terminal).
 
 ## Testing API
 
