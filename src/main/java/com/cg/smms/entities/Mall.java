@@ -25,6 +25,7 @@ public class Mall {
     private Category category;
     
     @OneToOne(mappedBy = "mall", cascade = CascadeType.ALL)
+    @com.fasterxml.jackson.annotation.JsonIgnoreProperties("mall")
     private MallAdmin mallAdmin;
     
     @OneToMany(mappedBy = "mall", cascade = CascadeType.ALL)

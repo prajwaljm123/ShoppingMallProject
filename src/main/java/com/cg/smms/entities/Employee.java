@@ -20,7 +20,7 @@ public class Employee {
     private String address;
     private String designation;
     @ManyToOne
-    @JsonIgnore
+    @com.fasterxml.jackson.annotation.JsonIgnoreProperties({"shopEmployees", "customers", "mall", "shopOwner"})
     private Shop shop;
 
     public Long getId() { return id; }

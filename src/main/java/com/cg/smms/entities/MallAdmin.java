@@ -5,7 +5,7 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
-import jakarta.persistence.ManyToOne;
+import jakarta.persistence.OneToOne;
 
 @Entity
 public class MallAdmin {
@@ -14,9 +14,9 @@ public class MallAdmin {
     private Long id;
     private String name;
     private String password;
-    private Long phone;
-    @ManyToOne
-    @JsonIgnore
+    private String phone;
+    @OneToOne
+    @com.fasterxml.jackson.annotation.JsonIgnoreProperties("mallAdmin")
     private Mall mall;
 
     public Long getId() { return id; }
@@ -25,8 +25,8 @@ public class MallAdmin {
     public void setName(String name) { this.name = name; }
     public String getPassword() { return password; }
     public void setPassword(String password) { this.password = password; }
-    public Long getPhone() { return phone; }
-    public void setPhone(Long phone) { this.phone = phone; }
+    public String getPhone() { return phone; }
+    public void setPhone(String phone) { this.phone = phone; }
     public Mall getMall() { return mall; }
     public void setMall(Mall mall) { this.mall = mall; }
 }

@@ -21,7 +21,7 @@ public class Customer {
     private String email;
     
     @ManyToOne
-    @JsonIgnore
+    @com.fasterxml.jackson.annotation.JsonIgnoreProperties({"customers", "shopEmployees", "mall", "shopOwner"})
     private Shop shop;
     
     @OneToMany(mappedBy = "customer", cascade = CascadeType.ALL)

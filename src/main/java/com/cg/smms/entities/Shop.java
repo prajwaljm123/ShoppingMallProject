@@ -29,7 +29,7 @@ public class Shop {
     private ShopStatus shopStatus;
     
     @ManyToOne
-    @JsonIgnore
+    @com.fasterxml.jackson.annotation.JsonIgnoreProperties({"shops", "mallAdmin"})
     private Mall mall;
     
     @OneToOne
@@ -37,11 +37,11 @@ public class Shop {
     private ShopOwner shopOwner;
     
     @OneToMany(mappedBy = "shop", cascade = CascadeType.ALL)
-    @JsonIgnore
+    @com.fasterxml.jackson.annotation.JsonIgnoreProperties("shop")
     private List<Employee> shopEmployees;
     
     @OneToMany(mappedBy = "shop", cascade = CascadeType.ALL)
-    @JsonIgnore
+    @com.fasterxml.jackson.annotation.JsonIgnoreProperties("shop")
     private List<Customer> customers;
     
     public enum ShopCategory {
